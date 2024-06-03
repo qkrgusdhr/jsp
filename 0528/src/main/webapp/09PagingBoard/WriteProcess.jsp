@@ -13,12 +13,7 @@ dto.setTitle(title);
 dto.setContent(content);
 
 BoardDAO dao = new BoardDAO();
-//int iResult = dao.insertWrite(dto);
-int iResult = 0;
-for(int i =1; i <= 100; i++){
-	dto.setTitle(title + "-" + i);
-	iResult = dao.insertWrite(dto);
-}
+int iResult = dao.insertWrite(dto);
 dao.close();
 
 if(iResult == 1){

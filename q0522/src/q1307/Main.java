@@ -1,18 +1,20 @@
-package q5933;
+package q1307;
 
 import java.util.Scanner;
 
 public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		int arr[][] = new int[n][n];
+		char arr[][] = new char[n][n];
 		
-		for(int i = 0; i < n; i ++) {
-			for(int j = 0; j < n; j++) {
-				arr[i][j] = (i + 1) * (j + 1);
+		char start ='A';
+		
+		for(int i = n-1; i >= 0; i --) {
+			for(int j = n-1; j >= 0; j--) {
+				if(start > 'Z')
+					start = 'A';
+					arr[j][i] = start ++;
 			}
 		}
 		
@@ -22,6 +24,5 @@ public class Main {
 			}
 			System.out.println();
 		}
-		sc.close();
 	}
 }
