@@ -51,5 +51,10 @@
 		<param-name>PAGES_PER_BLOCK</param-name>
 		<param-value>5</param-value>
 	</context-param>
-		
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/13Servlet/HelloServlet.do</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
