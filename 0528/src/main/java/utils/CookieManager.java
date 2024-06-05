@@ -1,8 +1,6 @@
 package utils;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 public class CookieManager {
 	public static void makeCookie(HttpServletResponse response, String cName, String cValue, int cTime) {

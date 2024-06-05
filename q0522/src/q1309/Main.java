@@ -7,11 +7,10 @@ public class Main {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-
+		long  fact[] = new long[n + 1];
 		if (n == 0) {
-			System.out.println("0! = 1");
+			System.out.println(n + "!" + " = " + 1);
 		} else {
-			long fact[] = new long[n + 1];
 			fact[0] = 1;
 			fact[1] = 1;
 			for (int i = 1; i <= n; i++) {
@@ -26,9 +25,9 @@ public class Main {
 					System.out.println(i + " * " + (i - 1) + "!");
 				}
 			}
-			System.out.println(fact[n]);
-			sc.close();
 		}
+		sc.close();
+		System.out.println(fact[n]);
 
 	}
 }

@@ -1,6 +1,7 @@
 package utils;
 
-import javax.servlet.jsp.JspWriter;
+
+import jakarta.servlet.jsp.JspWriter;
 
 public class JSFunction {
 	public static void alertLocation(String msg, String url, JspWriter out) {

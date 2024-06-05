@@ -8,9 +8,9 @@ String title = request.getParameter("title");
 String content = request.getParameter("content");
 
 BoardDTO dto = new BoardDTO();
-dto.setId(session.getAttribute("UserId").toString());
 dto.setTitle(title);
 dto.setContent(content);
+dto.setId(session.getAttribute("UserId").toString());
 
 BoardDAO dao = new BoardDAO();
 int iResult = dao.insertWrite(dto);
