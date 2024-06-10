@@ -55,7 +55,7 @@
 				<button type="button" onclick="location.href='../mvcboard/pass.do?mode=edit&idx=${param.idx};'">
 					수정하기
 				</button>
-				<button type="button" onclick="location.href='../mvcboard/pass.do?mode=delee&idx=${param.idx};'">
+				<button type="button" onclick="location.href='../mvcboard/pass.do?mode=delete&idx=${param.idx};'">
 					삭제하기
 				</button>
 				<button type="button" onclick="location.href='../mvcboard/list.do;'">

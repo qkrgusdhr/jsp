@@ -142,4 +142,19 @@ public class MVCBoardDAO extends DBConnPool{
 			System.out.println("게시물 조회수 증가 중 예외 발생");
 		}
 	}
+	
+	public void downCountPlus(String idx) {
+		String sql = "UPDATE MVCBOARD SET "
+				+ " DOWNCOUNT=DOWNCOUNT+1 "
+				+ " WHERE IDX=? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			pstmt.executeQuery();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+	}
 }

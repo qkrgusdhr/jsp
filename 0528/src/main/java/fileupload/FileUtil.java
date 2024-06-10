@@ -1,7 +1,11 @@
 package fileupload;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +13,7 @@ import java.util.Date;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
 public class FileUtil {
@@ -52,5 +57,42 @@ public class FileUtil {
 			list.add(originalFileNmae);
 		}
 		return list;
+	}
+	
+	public static void download(HttpServletRequest request, HttpServletResponse response, String directory, String sfileName, String ofileName) {
+		String sDirectory = request.getServletContext().getRealPath(directory);
+		try {
+			File file = new File(sDirectory, sfileName);
+			InputStream iStream = new FileInputStream(file);
+			
+			String client = request.getHeader("User-Agent");
+			if(client.indexOf("WOW64") == - 1) {
+				ofileName = new String(ofileName.getBytes("UTF-8"), "ISO-8859-1");
+			}else {
+				ofileName = new String(ofileName.getBytes("KSC5601"), "ISO-8859-1");
+			}
+			response.reset();
+			response.setContentType("application/octet-stream");
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + ofileName + "\"");
+			response.setHeader("Content-Length", "" + file.length());
+			
+			OutputStream oStream = response.getOutputStream();
+			
+			byte b[] = new byte[(int)file.length()];
+			int readBuffer = 0;
+			while((readBuffer = iStream.read(b)) > 0) {
+				oStream.write(b, 0, readBuffer);
+				iStream.close();
+				oStream.close();
+			}
+		}catch (FileNotFoundException e) {
+			// TODO: handle exception
+			System.out.println("파일을 찾을 수 없습니다.");
+			e.printStackTrace();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("예외가 발생하였습니다.");
+		}
 	}
 }
